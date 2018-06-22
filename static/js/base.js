@@ -1,3 +1,16 @@
+function getClass(resType) {
+	if(resType == 'Contrary') {
+		$('#answer').attr('class', 'text-danger') // use attr method here to prevent lots of .toggleClass() calls
+		return 'text-danger';
+	} else if(resType == 'Affirmative') {
+		$('#answer').attr('class', 'text-success')
+		return 'text-success';
+	} else {
+		$('#answer').attr('class', 'text-secondary')
+		return 'text-secondary';
+	}
+}
+
 $('#question-form').submit(function(e) {
 	e.preventDefault();
 
@@ -17,8 +30,8 @@ $('#question-form').submit(function(e) {
 				$('#response-history-tbody tr:eq(0)').remove();
 				historyHtml = $('#response-history-tbody').html();
 			}
-			
-			historyHtml += `<tr><td><strong>${data.magic['type']}</strong></td></tr>`;
+			let resType = data.magic['type'];
+			historyHtml += `<tr><td><strong class="${getClass(resType)}">${resType}</strong></td></tr>`;
 			$('#response-history-tbody').html(historyHtml);
 		});
 	} else {
