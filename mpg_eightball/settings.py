@@ -11,6 +11,18 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from django.utils.crypto import get_random_string
+from django.core.management.utils import get_random_secret_key
+
+# Auto generate a unique SECRET_KEY for development
+# Probably would want to use a more traditional approach in production
+try:
+    from .secret_key import SECRET_KEY
+except ImportError:
+    SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
+    with open(os.path.join(SETTINGS_DIR, 'secret_key.py'), 'x') as f:
+        f.write('SECRET_KEY = \'{}\''.format(get_random_secret_key()))
+    from .secret_key import SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
