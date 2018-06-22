@@ -20,6 +20,49 @@ body {
 }
 
 #core {
-    min-height: calc(100vh - 56px);
-    padding-bottom: 56px;
+    min-height: calc(100vh - 34px);
+    padding-bottom: 34px;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.60);
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    min-width: 350px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* -------------------------------------------------- Footer */
+
+.footer {
+    color: rgb(128, 128, 128);
+    color: rgba(255,255,255, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 34px;
+    line-height: 34px;
+    box-shadow: 0px 0px 10px #333;
+}
+
+footer .lead {
+    padding: 0;
+    margin: 0;
+}
+
+footer .lead a {
+    text-decoration: none;
+    font-weight: 700;
+    color: rgb(192, 192, 192);
+    color: rgba(255,255,255, 0.75);
+    transition: all 0.25s ease-in-out;
+}
+
+footer .lead a:hover {
+    color: #fff;
+    transition: all 0.25s ease-in-out;
 }

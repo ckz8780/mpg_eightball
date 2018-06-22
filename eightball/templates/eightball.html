@@ -1,10 +1,47 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
 {% block title %}
     Magic Eight Ball
 {% endblock %}
 
 {% block content %}
-    eightball.html
+<div class="row text-center">
+    <div class="col-12">
+        <h1 class="display-3 mt-2">Magic 8-Ball</h1>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-12">
+        <img id="mainball" src="{% static 'img/ball.png' %}">
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-12 col-md-6 offset-md-3">
+        <h1>Output Div</h1>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-12 col-md-6 offset-md-3">
+        <form method="POST" id="question-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <input id="question" class="form-control" type="text" name="question" placeholder="Enter your yes/no question..." required>
+            </div>
+            <div class="form-group">
+                <input id="submit-question" type="submit" class="btn btn-success btn-block" name="shake" value="Shake the Magic 8-ball">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-12 col-md-6 offset-md-3">
+        <h1>History Div</h1>
+    </div>
+</div>
 {% endblock %}
 
