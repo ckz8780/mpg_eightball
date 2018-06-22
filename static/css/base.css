@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,500,600,700|Roboto:300,400,500,600,700');
+
+/* -------------------------------------------------- Core/Sitewide CSS */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 56px;
+    color: #333;
+    background: url("/static/img/alt-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.condensed {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+#core {
+    min-height: calc(100vh - 56px);
+    padding-bottom: 56px;
+}
