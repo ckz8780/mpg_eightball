@@ -1,11 +1,14 @@
 function getClass(resType) {
-	if(resType == 'Contrary') {
-		return 'text-danger';
-	} else if(resType == 'Affirmative') {
-		return 'text-success';
-	} else {
-		return 'text-secondary';
+	
+	// Returns a class name given a response type
+
+	switch(resType) {
+		case 'Contrary':
+			return 'text-danger';
+		case 'Affirmative':
+			return 'text-success';
 	}
+	return 'text-secondary';
 }
 
 $('#question-form').submit(function(e) {
