@@ -16,6 +16,13 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - Django template inheritance, template tagging and form validation has been used throughout the site
 - Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations
 
+### Requirements:
+
+- Python 3.x
+- Django 2.x
+- Pip (to install requirements)
+- (Optional) Virtualenv or some other virtual environment management tool if you want to run it in a venv
+
 ### Setup/Usage:
 
 - (Optional) Create a virtual environment
