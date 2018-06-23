@@ -1,12 +1,9 @@
 function getClass(resType) {
 	if(resType == 'Contrary') {
-		$('#answer').attr('class', 'text-danger') // use attr method here to prevent lots of .toggleClass() calls
 		return 'text-danger';
 	} else if(resType == 'Affirmative') {
-		$('#answer').attr('class', 'text-success')
 		return 'text-success';
 	} else {
-		$('#answer').attr('class', 'text-secondary')
 		return 'text-secondary';
 	}
 }
@@ -21,13 +18,13 @@ $('#question-form').submit(function(e) {
 		let uri = 'https://8ball.delegator.com/magic/JSON/' + encodeURIComponent(submittedQuestion);
 		this.reset();
 		$.get(uri).done(function(data) {
-			$('#answer').html(data.magic.answer);
+			$('#answer').hide().html(`${data.magic.answer}.`).fadeIn();
 
 			var resultRowCount = $('#response-history-tbody tr').length;
 			var historyHtml = $('#response-history-tbody').html();
 			
 			if(resultRowCount >= 3) {
-				$('#response-history-tbody tr:eq(0)').remove();
+				$('#response-history-tbody tr:eq(0)').fadeOut().remove();
 				historyHtml = $('#response-history-tbody').html();
 			}
 			let resType = data.magic['type'];
@@ -35,6 +32,6 @@ $('#question-form').submit(function(e) {
 			$('#response-history-tbody').html(historyHtml);
 		});
 	} else {
-		$('#missing-question').modal('show');
+		$('#invalid-question').modal('show');
 	}
 });

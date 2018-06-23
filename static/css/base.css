@@ -52,6 +52,11 @@ body {
 	vertical-align: middle;
 }
 
+#response-history {
+    border-radius: .25rem;
+    overflow: hidden;
+}
+
 /* -------------------------------------------------- Footer */
 
 footer {
