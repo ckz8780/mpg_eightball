@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
-    <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-home"></i> Magic 8-Ball {% if request.user.is_authenticated %}<small>Welcome, {{ request.user }}!</small>{% endif %}</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand py-0" href="{% url 'index' %}"><i class="fa fa-home"></i> Magic 8-Ball {% if request.user.is_authenticated %}<small class="ml-2">Welcome, {{ request.user }}!</small>{% endif %}</a>
+    <button class="navbar-toggler py-0" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a></li>
+            <li class="nav-item"><a class="nav-link {% if request.path == '/' %}active{% endif %} py-1 py-md-0" href="{% url 'index' %}"><i class="fa fa-home"></i> Home</a></li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle {% if not request.path == '/' %}active{% endif %}" href="" id="accountsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Accounts</a>
+                <a class="nav-link dropdown-toggle {% if not request.path == '/' %}active{% endif %} py-1 py-md-0" href="" id="accountsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Accounts</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountsDropdown">
                     {% if request.user.is_authenticated %}
                         <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-user"></i> My Profile</a>

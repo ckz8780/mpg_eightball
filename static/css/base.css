@@ -19,11 +19,6 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-#core {
-    min-height: calc(100vh - 68px); /* calc 100% viewport height less 34px * 2 for header & footer */
-    /*padding-bottom: 34px;*/
-}
-
 .overlay {
     background: rgba(255, 255, 255, 0.60);
     height: 100%;
@@ -39,9 +34,12 @@ body {
 /* -------------------------------------------------- Navbar */
 
 nav {
-    height: 34px;
     box-shadow: 0px 0px 10px #333;
     transition: all 0.15s ease-in-out;
+}
+
+.fixed-top {
+    padding: 2px 1rem;
 }
 
 .navbar-dark .navbar-brand {
@@ -84,10 +82,25 @@ nav {
 
 @media(min-width: 768px) {
     .dropdown-menu-right {
-        box-shadow: 0px -10px 0px #28a745, 0px 2px 10px #333;
+        box-shadow: 0px -7px 0px #28a745, 0px 1px 10px #333;
         border-radius: 0px 0px .25rem .25rem;
-        margin-top: -4px;
+        margin-top: 4px;
     }
+}
+
+/* -------------------------------------------------- Mobile Navbar */
+
+button.navbar-toggler:focus {
+    outline: none;
+}
+
+button.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler-icon {
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 /* -------------------------------------------------- Body Content */
