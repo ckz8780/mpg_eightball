@@ -13,7 +13,7 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - Local browser storage is used to store API response history data
 - Response history data is persistent between refreshes, browser restarts, and even user login/logout (try creating multiple users and logging in/out - it will remember your response history until you clear it!)
 - A nav menu and footer have been added, providing navigation throughout the site and a link to my personal Github
-- Django template inheritance, template tagging and form validation has been used throughout the site
+- Django template inheritance, template tagging and form validation have been used throughout the site
 - The Django messages framework has been utilized for various messages throughout the app (primarily in the authentication/registration views)
 - Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations
 
