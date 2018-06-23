@@ -112,6 +112,15 @@ nav {
     overflow: hidden;
 }
 
+#clear-history {
+    display: block;
+    padding: 10px 0px;
+}
+
+#clear-history-button {
+    display: none;
+}
+
 /* -------------------------------------------------- Footer */
 
 footer {
