@@ -5,16 +5,14 @@
     Magic Eight Ball
 {% endblock %}
 
+{% block header %}
+    Magic 8-Ball
+{% endblock %}
+
 {% block content %}
 <div class="row text-center">
     <div class="col-12">
-        <h1 class="display-3 mt-2">Magic 8-Ball</h1>
-    </div>
-</div>
-
-<div class="row text-center">
-    <div class="col-12">
-        <img id="mainball" src="{% static 'img/ball.png' %}">
+        <img id="mainball" src="{% static 'img/ball.png' %}" alt="eight ball">
     </div>
 </div>
 
