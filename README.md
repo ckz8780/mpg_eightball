@@ -16,29 +16,32 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - Django template inheritance, template tagging and form validation have been used throughout the site
 - The Django messages framework has been utilized for various messages throughout the app (primarily in the authentication/registration views)
 - Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations
+- All HTML and CSS has been validated with the W3C validators. JS has been validated at jslint.com with the following properties:
+	- Global variables: $, localStorage
+	- Tolerate long lines, `this`, and whitespace mess
 
 ### Requirements:
 
-- Python 3.x
+- Python 3.x (you can check this with `python --version`)
 - Django 2.x
 - Pip (to install requirements)
-- (Optional) Virtualenv or some other virtual environment management tool if you want to run it in a venv
+- *(Optional) Virtualenv or some other virtual environment management tool if you want to run it in a venv*
 
 ### Setup/Usage:
 
-- (Optional) Create a virtual environment
+- *(Optional) Create a virtual environment (see https://virtualenv.pypa.io/en/stable/)*
 - Download or clone this repo
 - Install requirements: `pip install -r requirements.txt`
-- Make migrations: `python manage.py makemigrations`
+- *(Optional) Make migrations: `python manage.py makemigrations` (it will say no changes detected unless you've modifed the models)*
 - Migrate changes: `python manage.py migrate`
-- (Optional) Create a superuser: `python manage.py createsuperuser` and follow the prompts
+- *(Optional) Create a superuser: `python manage.py createsuperuser` and follow the prompts*
 - Run the local development server: `python manage.py runserver` (**IMPORTANT:** see notes below)
 - Navigate to http://127.0.0.1:21337 - you will be redirected to the login page
 - If you created a superuser above, you can use your superuser to log in 
-- (Optional) If you opted not to create a superuser, register for an account and you will be automatically logged in with your new standard user
+- *(Optional) If you opted not to create a superuser, register for an account and you will be automatically logged in with your new standard user*
 
 ### Important Notes:
 
-- The local development server runs on port 21337. For convenience, `manage.py` has been modified so it will start there automatically. If for some reason this does not work, comment out lines 9-15 in `manage.py` and start the server with `python manage.py runserver <desired port>`
+- The local development server runs on port 21337. For convenience, `manage.py` has been modified so it will start there automatically. If for some reason this does not work, start the server with `python manage.py runserver <desired port>`
 - For convenience, this project automatically generates a secret key in `<YOUR_SETTINGS_DIRECTORY>/secret_key.py` for you when you run the development server for the first time. If you plan to launch the app in production, please refer to the [Django Deployment Checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/) for how to properly handle your `SECRET_KEY`.
-- Due to the above, you must have **write access** to your settings directory in order to generate the secret key. If you prefer to set it yourself, simply remove lines 17-25 in `settings.py` and replace them with `SECRET_KEY = <your secret key>`
+- Due to the above, you must have **write access** to your settings directory in order to generate the secret key. If you prefer to set it yourself, simply replace lines 17-25 in `settings.py` with `SECRET_KEY = <your secret key>`
