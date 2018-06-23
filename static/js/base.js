@@ -11,6 +11,11 @@ function getClass(resType) {
 	return 'text-secondary';
 }
 
+function storeHistory(user, historyHtml) {
+	console.log(user);
+	console.log(historyHtml);
+}
+
 $('#question-form').submit(function(e) {
 	e.preventDefault();
 
@@ -33,6 +38,8 @@ $('#question-form').submit(function(e) {
 			let resType = data.magic['type'];
 			historyHtml += `<tr><td><strong class="${getClass(resType)}">${resType}</strong></td></tr>`;
 			$('#response-history-tbody').html(historyHtml);
+			let user = "{{ request.user }}"
+			storeHistory(user, historyHtml);
 		});
 	} else {
 		$('#invalid-question').modal('show');

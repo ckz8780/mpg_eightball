@@ -6,8 +6,14 @@ from django.core.exceptions import ValidationError
 class UserLoginForm(forms.Form):
     '''Form to be used to log users in'''
     
-    username = forms.CharField()
+    username = forms.CharField(label="Username or Email")
     password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        # Disable autocomplete on all fields and auto-focus on the username field
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({'autofocus': '', 'autocomplete': 'off'})
+        self.fields['password'].widget.attrs.update({'autocomplete': 'off'})
     
 class UserRegistrationForm(UserCreationForm):
     '''Form used to register a new user'''
@@ -20,10 +26,12 @@ class UserRegistrationForm(UserCreationForm):
         fields = ['email', 'username', 'password1', 'password2']
 
     def __init__(self, *args, **kwargs):
-        # Override default init from `UserCreationForm` to use email as
-        # username field, and set autofocus.
+        # Disable autocomplete on all fields and auto-focus on the email field
         super(UserCreationForm, self).__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'autofocus': ''}) 
+        self.fields['email'].widget.attrs.update({'autofocus': '', 'autocomplete': 'off'})
+        self.fields['username'].widget.attrs.update({'autocomplete': 'off'})
+        self.fields['password1'].widget.attrs.update({'autocomplete': 'off'})
+        self.fields['password2'].widget.attrs.update({'autocomplete': 'off'})
         
     def clean_email(self):
         email = self.cleaned_data.get('email')
