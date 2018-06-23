@@ -141,3 +141,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Change this if you want to send real emails instead of just logging them to the console
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
