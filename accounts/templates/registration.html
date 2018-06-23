@@ -11,11 +11,14 @@
 {% endblock %}
 
 {% block content %}
-    <p>If you already have an account, you can <a href="{% url 'login' %}" class="">sign in</a>.</p>
-    
-    <form method="POST">
-        {% csrf_token %}
-        {{ registration_form | as_bootstrap }}
-        <button class="btn btn-default" type="submit">Register</button>
-    </form>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-5">
+        <form method="POST">
+            {% csrf_token %}
+            {{ registration_form | as_bootstrap }}
+            <button class="btn btn-success btn-block btn-lg mt-5" type="submit">Register</button>
+        </form>
+        <h4 class="text-center mt-5">If you already have an account, you can <a href="{% url 'login' %}" class="">log in</a>.</h4>
+    </div>
+</div>
 {% endblock %}
