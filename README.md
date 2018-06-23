@@ -14,6 +14,7 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - Response history data is persistent between refreshes, browser restarts, and even user login/logout (try creating multiple users and logging in/out - it will remember your response history until you clear it!)
 - A nav menu and footer have been added, providing navigation throughout the site and a link to my personal Github
 - Django template inheritance, template tagging and form validation has been used throughout the site
+- The Django messages framework has been utilized for various messages throughout the app (primarily in the authentication/registration views)
 - Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations
 
 ### Requirements:
@@ -38,6 +39,6 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 
 ### Important Notes:
 
-- The local development server runs on port 21337. For convenience, manage.py has been modified so it will start there automatically. If for some reason this does not work, comment out lines 9-15 in `manage.py` and start the server with `python manage.py runserver <desired port>`
+- The local development server runs on port 21337. For convenience, `manage.py` has been modified so it will start there automatically. If for some reason this does not work, comment out lines 9-15 in `manage.py` and start the server with `python manage.py runserver <desired port>`
 - For convenience, this project automatically generates a secret key in `<YOUR_SETTINGS_DIRECTORY>/secret_key.py` for you when you run the development server for the first time. If you plan to launch the app in production, please refer to the [Django Deployment Checklist](https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/) for how to properly handle your `SECRET_KEY`.
 - Due to the above, you must have **write access** to your settings directory in order to generate the secret key. If you prefer to set it yourself, simply remove lines 17-25 in `settings.py` and replace them with `SECRET_KEY = <your secret key>`

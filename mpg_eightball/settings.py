@@ -20,7 +20,7 @@ try:
     from .secret_key import SECRET_KEY
 except ImportError:
     SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
-    with open(os.path.join(SETTINGS_DIR, 'secret_key.py'), 'x') as f:
+    with open(os.path.join(SETTINGS_DIR, 'secret_key.py'), 'w') as f:
         f.write('SECRET_KEY = \'{}\''.format(get_random_secret_key()))
     from .secret_key import SECRET_KEY
 
