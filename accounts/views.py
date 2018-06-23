@@ -12,7 +12,7 @@ def index(request):
 def logout(request):
     '''Log the user out'''
     auth.logout(request)
-    messages.success(request, 'You have successfully been logged out!')
+    messages.success(request, 'You have successfully logged out! You can log in again if you wish.')
     return redirect(reverse('index'))
     
 def login(request):

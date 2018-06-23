@@ -11,11 +11,31 @@
 {% endblock %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ login_form | as_bootstrap }}
-        <button class="btn btn-default" type="submit">Login</button>
-    </form>
-    
-    <p><a href="{% url 'password_reset' %}">Forgot your password?</a></p>
+
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3 mt-5">
+    	{% if messages %}
+	    	{% for message in messages %}
+		    	{% if 'success' in message.tags %}
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+				{% elif 'error' in message.tags %}
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				{% else %}
+					<div class="alert alert-warning alert-dismissible fade show" role="alert">
+				{% endif %}
+						{{ message }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+	    	{% endfor %}
+    	{% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form | as_bootstrap }}
+            <button class="btn btn-success btn-block btn-lg mt-5" type="submit">Login</button>
+        </form>
+        <h4 class="text-center mt-5">If you've forgotten your password, you can <a href="{% url 'password_reset' %}" class="">reset it</a>.</h4>
+    </div>
+</div>
 {% endblock %}
