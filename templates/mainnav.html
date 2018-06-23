@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-success fixed-top">
-    <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-home"></i> Magic 8-Ball</a>
+    <a class="navbar-brand" href="{% url 'index' %}"><i class="fa fa-home"></i> Magic 8-Ball {% if request.user.is_authenticated %}<small>Welcome, {{ request.user }}!</small>{% endif %}</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
                 <a class="nav-link dropdown-toggle {% if not request.path == '/' %}active{% endif %}" href="" id="accountsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Accounts</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountsDropdown">
                     {% if request.user.is_authenticated %}
-                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-user"></i> My Profile</a>
                         <a class="dropdown-item" href="{% url 'password_reset' %}"><i class="fa fa-key"></i> Reset Password</a>
                         <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
                     {% else %}
