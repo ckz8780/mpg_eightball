@@ -10,12 +10,12 @@
                 <a class="nav-link dropdown-toggle {% if not request.path == '/' %}active{% endif %}" href="" id="accountsDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Accounts</a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountsDropdown">
                     {% if request.user.is_authenticated %}
-                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-eye"></i> Profile</a>
-                        <a class="dropdown-item" href="{% url 'password_reset' %}"><i class="fa fa-eye"></i> Reset Password</a>
-                        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-eye"></i> Logout</a>
+                        <a class="dropdown-item" href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a>
+                        <a class="dropdown-item" href="{% url 'password_reset' %}"><i class="fa fa-key"></i> Reset Password</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
                     {% else %}
-                        <a class="dropdown-item" href="{% url 'login' %}"><i class="fa fa-cogs"></i> Login</a>
-                        <a class="dropdown-item" href="{% url 'registration' %}"><i class="fa fa-cogs"></i> Register</a>
+                        <a class="dropdown-item" href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a>
+                        <a class="dropdown-item" href="{% url 'registration' %}"><i class="fa fa-user-plus"></i> Register</a>
                     {% endif %}
                 </div>
             </li>
