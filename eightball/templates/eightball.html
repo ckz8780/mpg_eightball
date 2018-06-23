@@ -19,7 +19,7 @@
 <div class="row text-center">
     <div id="response-data-container" class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
         <div id="response-data">
-            <h4><strong id="answer"></strong></h4>    
+            <h4><strong id="answer"></strong></h4>
         </div>
     </div>
 </div>
@@ -30,6 +30,7 @@
             {% csrf_token %}
             <div class="form-group">
                 <input id="question" class="form-control" type="text" name="question" placeholder="Enter your yes/no question..." required>
+                <input id="current-user" name="currentUser" type="hidden" value="{{ request.user }}">
             </div>
             <div class="form-group">
                 <input id="submit-question" type="submit" class="btn btn-success btn-block mt-4 mb-4" name="shake" value="Shake the Magic 8-ball">

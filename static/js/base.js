@@ -12,8 +12,8 @@ function getClass(resType) {
 }
 
 function storeHistory(user, historyHtml) {
-	console.log(user);
-	console.log(historyHtml);
+	console.log('User is: ', user);
+	console.log('History String:', historyHtml);
 }
 
 $('#question-form').submit(function(e) {
@@ -22,6 +22,7 @@ $('#question-form').submit(function(e) {
 	// remove question marks and whitespace to prevent CORS request blocking
 	// Other characters may still cause this
 	let submittedQuestion = $.trim(this.question.value.replace(/\?/g, ''));
+	let currentUser = $.trim(this.currentUser.value);
 	if(submittedQuestion.length > 1) {
 		let uri = 'https://8ball.delegator.com/magic/JSON/' + encodeURIComponent(submittedQuestion);
 		this.reset();
@@ -38,8 +39,7 @@ $('#question-form').submit(function(e) {
 			let resType = data.magic['type'];
 			historyHtml += `<tr><td><strong class="${getClass(resType)}">${resType}</strong></td></tr>`;
 			$('#response-history-tbody').html(historyHtml);
-			let user = "{{ request.user }}"
-			storeHistory(user, historyHtml);
+			storeHistory(currentUser, historyHtml);
 		});
 	} else {
 		$('#invalid-question').modal('show');
