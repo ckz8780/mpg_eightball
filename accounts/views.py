@@ -68,4 +68,4 @@ def registration(request):
 def profile(request):
     '''Render the user's profile'''
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {'profile': user})
+    return render(request, 'profile.html')
