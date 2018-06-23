@@ -7,7 +7,7 @@ A simple Magic 8-Ball app demonstrating many of the basic features of Python, Dj
 This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and randomly generates Magic 8-Ball responses to yes/no questions. It uses Python 3 and Django 2.0.6, as well as standard HTML5, CSS3 and Javascript/jQuery for front end design. The following extra features have been added to demonstrate the power of Django and Python:
 
 - Authentication and authorization with user registration, login/logout, password resets and a simple profile page
-	- Note: Password resets log the reset email to the console
+	- Note: Password resets log the reset email to the console. If you want to actually reset your password, copy/paste the link from your terminal into the address bar
 	- An email authentication backend has been written to allow either username or email authentication
 - Design methodology is mobile-first, so it is responsive across multiple screen layouts
 - Local browser storage is used to store API response history data
