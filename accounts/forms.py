@@ -18,6 +18,12 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['email', 'username', 'password1', 'password2']
+
+    def __init__(self, *args, **kwargs):
+        # Override default init from `UserCreationForm` to use email as
+        # username field, and set autofocus.
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'autofocus': ''}) 
         
     def clean_email(self):
         email = self.cleaned_data.get('email')
