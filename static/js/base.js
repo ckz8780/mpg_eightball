@@ -1,3 +1,8 @@
+function restoreHistoryIfExists(user) {
+	var userHistoryObj = JSON.parse(localStorage.getItem(`userHistory_${user}`));
+	$('#response-history-tbody').html(userHistoryObj.historyHtml);
+}
+
 function getClass(resType) {
 	
 	// Returns a class name given a response type
@@ -14,6 +19,12 @@ function getClass(resType) {
 function storeHistory(user, historyHtml) {
 	console.log('User is: ', user);
 	console.log('History String:', historyHtml);
+	let userHistory = {
+		'username': user,
+		'historyHtml': historyHtml
+	};
+	console.log(userHistory);
+	localStorage.setItem(`userHistory_${user}`, JSON.stringify(userHistory));
 }
 
 $('#question-form').submit(function(e) {
