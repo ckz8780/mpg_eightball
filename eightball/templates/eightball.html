@@ -33,7 +33,7 @@
                 <input id="currentUser" name="currentUser" type="hidden" value="{{ request.user }}">
             </div>
             <div class="form-group">
-                <input id="submit-question" type="submit" class="btn btn-success btn-block mt-4 mb-4" name="shake" value="Shake the Magic 8-ball">
+                <input id="submit-question" type="submit" class="btn btn-success btn-block btn-lg mt-4 mb-4" name="shake" value="Shake the Magic 8-ball">
             </div>
         </form>
     </div>
@@ -50,8 +50,8 @@
                 </thead>
                 <tbody id="response-history-tbody"></tbody>
             </table>
-            <span id="clear-history"><button id="clear-history-button" class="btn btn-sm btn-danger">Clear History</button></span>
         </div>
+        <span id="clear-history"><button id="clear-history-button" class="btn btn-sm btn-danger">Clear History</button></span>
     </div>
 </div>
 {% endblock %}

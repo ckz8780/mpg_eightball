@@ -45,6 +45,9 @@ nav {
 .navbar-dark .navbar-brand {
     font-weight: 700;
     transition: all 0.25s ease-in-out;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .navbar-dark .navbar-brand:hover {
@@ -76,6 +79,10 @@ nav {
     color: rgb(192, 192, 192);
     color: rgba(255, 255, 255, 0.75);
     transition: all 0.15s ease-in-out;
+}
+
+.welcome {
+    font-size: 65%;
 }
 
 /* -------------------------------------------------- Navbar Media Queries */
@@ -132,6 +139,20 @@ button.navbar-toggler {
 
 #clear-history-button {
     display: none;
+}
+
+/* -------------------------------------------------- Body Content Media Queries */
+
+@media (max-width: 460px) {
+    h1.display-3 {
+        font-size: 3.0rem;        
+    }
+}
+
+@media (min-width: 461px) and (max-width: 575px) {
+    h1.display-3 {
+        font-size: 3.5rem;
+    }
 }
 
 /* -------------------------------------------------- Footer */
