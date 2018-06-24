@@ -56,3 +56,7 @@
 </div>
 {% endblock %}
 
+{% block postloadjs %}
+<script>restoreHistoryFromLocalStorageIfExists("{{ request.user }}");</script>
+{% endblock %}
+

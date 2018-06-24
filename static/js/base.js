@@ -1,7 +1,6 @@
 "use strict";
 
-/** Returns a class name given a response type */
-function getCssClass(resType) {
+function getCssClassFromResponseType(resType) {
 	switch(resType) {
 		case "Contrary":
 			return "text-danger";
@@ -11,8 +10,16 @@ function getCssClass(resType) {
 	return "text-secondary";
 }
 
-/** Restore response history from localStorage if it exists */
-function restoreHistoryIfExists(user) {
+function storeHistoryInLocalStorage(user, historyHtml) {
+	let userHistory = {
+		"username": user,
+		"historyHtml": historyHtml
+	};
+	localStorage.setItem(`userHistory_${user}`, JSON.stringify(userHistory));
+	$("#clear-history-button").fadeIn();
+}
+
+function restoreHistoryFromLocalStorageIfExists(user) {
 	let userHistoryObj = JSON.parse(localStorage.getItem(`userHistory_${user}`));
 	if(userHistoryObj) {
 		$("#clear-history-button").fadeToggle();
@@ -20,14 +27,22 @@ function restoreHistoryIfExists(user) {
 	}
 }
 
-/** Store response history in localStorage */
-function storeHistory(user, historyHtml) {
-	let userHistory = {
-		"username": user,
-		"historyHtml": historyHtml
-	};
-	localStorage.setItem(`userHistory_${user}`, JSON.stringify(userHistory));
-	$("#clear-history-button").fadeIn();
+function updatePageWithApiResponse(data, currentUser) {
+	$("#answer").hide().html(`${data.magic.answer}.`).fadeIn();
+
+	let numRows = $("#response-history-tbody tr").length;
+	let historyHtml = $("#response-history-tbody").html();
+	
+	if(numRows >= 3) {
+		$("#response-history-tbody tr:eq(0)").remove();
+		historyHtml = $("#response-history-tbody").html();
+	}
+
+	let resType = data.magic.type;
+	historyHtml += `<tr><td><strong class="${getCssClassFromResponseType(resType)}">${resType}</strong></td></tr>`;
+	
+	$("#response-history-tbody").html(historyHtml);
+	storeHistoryInLocalStorage(currentUser, historyHtml);
 }
 
 /** Handle yes/no question form submission */
@@ -42,21 +57,7 @@ $("#question-form").submit(function(e) {
 		this.reset();
 	
 		$.get(uri).done(function(data) {
-			$("#answer").hide().html(`${data.magic.answer}.`).fadeIn();
-
-			let numRows = $("#response-history-tbody tr").length;
-			let historyHtml = $("#response-history-tbody").html();
-			
-			if(numRows >= 3) {
-				$("#response-history-tbody tr:eq(0)").fadeOut().remove();
-				historyHtml = $("#response-history-tbody").html();
-			}
-
-			let resType = data.magic.type;
-			historyHtml += `<tr><td><strong class="${getCssClass(resType)}">${resType}</strong></td></tr>`;
-			
-			$("#response-history-tbody").html(historyHtml);
-			storeHistory(currentUser, historyHtml);
+			updatePageWithApiResponse(data, currentUser);
 		});
 
 	} else {

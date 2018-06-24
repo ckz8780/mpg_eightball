@@ -54,3 +54,4 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - Implementation of Django REST Framework (server-side API calls vs client-side) and/or ReactJS instead of vanilla Javascript/jQuery
 - Live launch on Heroku/PaaS Provider w/ base/dev/staging/prod settings
 - Migration from Sqlite to Postgres
+- Testing w/ `unittest` and Jasmine
