@@ -15,7 +15,7 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 - A nav menu and footer have been added, providing navigation throughout the site and a link to my personal Github
 - Django template inheritance, template tagging and form validation have been used throughout the site
 - The Django messages framework has been utilized for various messages throughout the app (primarily in the authentication/registration views)
-- Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations
+- Some crude Javascript data cleansing has been implemented on the question submission form to prevent some CORS violations (try entering just a question mark, for example)
 - All HTML and CSS has been validated with the W3C validators. JS has been validated at jslint.com with the following properties:
 	- **Global variables:** $, localStorage
 	- **Tolerate:** Long lines, `this`, and whitespace mess
@@ -49,9 +49,9 @@ This app talks to the Magic 8-Ball API at https://8ball.delegator.com/ and rando
 ### Potential Enhancements:
 
 - Use of `django-registration-redux` instead of self-built `accounts` app for faster setup of registration/auth system
-- Use of `django-crispy-forms` instead of `django-forms-bootstrap` for better form flexibility
+- Use of `django-crispy-forms` instead of `django-forms-bootstrap` for better form flexibility and better formatting of validation errors
 - Use of class-based views for accounts/auth/registration views to consolidate code
-- Implementation of Django REST Framework (server-side API calls vs client-side) and/or ReactJS instead of vanilla Javascript/jQuery
+- Implementation of server side API calls instead of client side, and/or implementation of a React front end
 - Live launch on Heroku/PaaS Provider w/ base/dev/staging/prod settings
 - Migration from Sqlite to Postgres
 - Testing w/ `unittest` and Jasmine
