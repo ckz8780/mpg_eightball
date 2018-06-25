@@ -16,13 +16,17 @@ from django.core.management.utils import get_random_secret_key
 
 # Auto generate a unique SECRET_KEY for development
 # Probably would want to use a more traditional approach in production
+
 try:
     from .secret_key import SECRET_KEY
-except ImportError:
+except (ImportError, ModuleNotFoundError) as e:
     SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
     with open(os.path.join(SETTINGS_DIR, 'secret_key.py'), 'w') as f:
         f.write('SECRET_KEY = \'{}\''.format(get_random_secret_key()))
     from .secret_key import SECRET_KEY
+except Exception as e:
+    print('\n\n\n*****Exception occurred while auto-generating secret key. Please generate one yourself at https://www.miniwebtool.com/django-secret-key-generator/ and replace lines 14-28 in settings.py with SECRET_KEY=<your secret key>\n\nException: {}\n\n'.format(e))
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
